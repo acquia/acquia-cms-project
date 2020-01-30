@@ -10,8 +10,7 @@
         "acquia/drupal-spec-tool": "*",
         "acquia/lightning": "dev-8.x-4.x",
         "acquia/memcache-settings": "*",
-        "cohesion/dx8": "^5.7",
-        "cohesion/dx8-theme": "^5.7",
+        "acquia/cohesion": "^6.0",
         "drupal/acquia_connector": "^1.5.0",
         "drupal/acquia_purge": "^1.0-beta3",
         "drupal/acsf": "^2.63",
@@ -120,13 +119,15 @@
             "type": "composer",
             "url": "https://asset-packagist.org"
         },
-        "dx8": {
-            "type": "vcs",
-            "url": "https://bitbucket.org/cohesion_dev/dx8-module.git"
+        "cohesion": {
+            "type": "path",
+            "url": "upstreams/cohesion",
+            "symlink": "true"
         },
-        "dx8-theme": {
-            "type": "vcs",
-            "url": "https://bitbucket.org/cohesion_dev/dx8-theme.git"
+        "acquia_cms": {
+            "type": "path",
+            "url": "upstreams/acquia_cms",
+            "symlink": "true"
         }
     },
     "minimum-stability": "dev",
