@@ -39,8 +39,7 @@ fin clone-repos
 echo "Make sure BLT is installed"
 fin exec composer install
 fin blt setup -n
-
-# Install additional Acquia CMS modules.
-fin acms
+# Fetch Cohesion starter assets.
+fin init-cohesion
 
 echo -e "Open ${yellow}http://${VIRTUAL_HOST}${NC} in your browser to verify the setup."
