@@ -104,7 +104,11 @@
         "patchLevel": {
             "drupal/core": "-p2"
         },
-        "patches": {}
+        "patches": {
+            "docksal/blt-docksal": {
+                "Behat running twice in Travis": "./patches/blt-docksal-3-behat-testing-2x.patch"
+            }
+        }
     },
     "autoload": {
         "psr-4": {

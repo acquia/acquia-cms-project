@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3a40c0349d3aa75e523634bd75b27785",
+    "content-hash": "dbc53b7f36bd58f15f7ee7d849302c05",
     "packages": [
         {
             "name": "acquia/acquia_cms",
@@ -2450,6 +2450,11 @@
                 "shasum": ""
             },
             "type": "library",
+            "extra": {
+                "patches_applied": {
+                    "Behat running twice in Travis": "./patches/blt-docksal-3-behat-testing-2x.patch"
+                }
+            },
             "autoload": {
                 "psr-4": {
                     "Docksal\\BltDockal\\": "./src/"
