@@ -1,0 +1,25 @@
+diff --git a/src/Blt/Plugin/Commands/BehatDocksalCommand.php b/src/Blt/Plugin/Commands/BehatDocksalCommand.php
+index 131a880..dac3a02 100644
+--- a/src/Blt/Plugin/Commands/BehatDocksalCommand.php
++++ b/src/Blt/Plugin/Commands/BehatDocksalCommand.php
+@@ -36,13 +36,14 @@ class BehatDocksalCommand extends BehatCommand {
+     if (!$this->getConfigValue('docksal.enable')) {
+       parent::behat();
+     }
++    else {
++      // Log config for debugging purposes.
++      $this->logConfig($this->getConfigValue('behat'), 'behat');
++      $this->logConfig($this->getInspector()->getLocalBehatConfig()->export());
++      $this->createReportsDir();
+ 
+-    // Log config for debugging purposes.
+-    $this->logConfig($this->getConfigValue('behat'), 'behat');
+-    $this->logConfig($this->getInspector()->getLocalBehatConfig()->export());
+-    $this->createReportsDir();
+-
+-    $this->executeBehatTests();
++      $this->executeBehatTests();
++    }
+   }
+ 
+ }

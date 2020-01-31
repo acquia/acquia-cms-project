@@ -26,6 +26,8 @@ addons:
   # ssh_known_hosts:
   #   - svn-4786.devcloud.hosting.acquia.com
   chrome: stable
+  hosts:
+    - chrome
 
 # @see https://docs.travis-ci.com/user/notifications
 # notifications:
@@ -34,8 +36,7 @@ addons:
 
 before_install:
   # Add Cohesion repos. Remove once these are published on Packagist.
-  - composer config --global repositories.dx8 vcs https://bitbucket.org/cohesion_dev/dx8-module.git
-  - composer config --global repositories.dx8-theme vcs https://bitbucket.org/cohesion_dev/dx8-theme.git
+  - composer config --global repositories.cohesion vcs https://github.com/acquia/cohesion-dev.git
   # Clone any upstream repos that ACMS is dependant on and need their own working dir.
   - bash .docksal/addons/clone-repos/clone-repos
   - bash .docksal/addons/travis-optimize/travis-optimize
