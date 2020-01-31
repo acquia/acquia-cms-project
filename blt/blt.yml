@@ -81,3 +81,10 @@ modules:
     uninstall:
       - devel
       - views_ui
+tests:
+  phpunit:
+    - # Run BLT's example test.
+      path: "${repo.root}/tests/phpunit"
+      config: "${docroot}/core/phpunit.xml.dist"
+      class: "ExampleTest"
+      file: "ExampleTest.php"
