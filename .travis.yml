@@ -37,6 +37,8 @@ addons:
 before_install:
   # Add Cohesion repos. Remove once these are published on Packagist.
   - composer config --global repositories.cohesion vcs https://github.com/acquia/cohesion-dev.git
+  # Add Acquia CMS repo.
+  - composer config --global repositories.acquia_cms vcs https://github.com/acquia/acquia_cms.git
   # Clone any upstream repos that ACMS is dependant on and need their own working dir.
   - bash .docksal/addons/clone-repos/clone-repos
   - bash .docksal/addons/travis-optimize/travis-optimize
