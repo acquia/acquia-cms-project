@@ -51,9 +51,6 @@ install:
   - source ${BLT_DIR}/scripts/travis/setup_environment
   - source ${BLT_DIR}/scripts/travis/setup_project
 
-# Run built in testing server.
-before_script: drush runserver --default-server=builtin 9222 &>/dev/null &
-
 script:
   # Uncomment these lines to test database updates using live content.
   # - blt drupal:sync:default:site
