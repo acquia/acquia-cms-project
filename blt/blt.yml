@@ -81,8 +81,3 @@ modules:
     uninstall:
       - devel
       - views_ui
-tests:
-  phpunit:
-    - # Acquia CMS tests.
-      path: "${docroot}"
-      directory: "${docroot}/profiles/contrib/acquia_cms/tests/phpunit"
