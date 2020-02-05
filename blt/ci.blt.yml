@@ -11,3 +11,9 @@ tests.drupal.sudo-run-tests: false
 project.local.hostname: 127.0.0.1:8888
 drush.debug: false
 docksal.enable: false
+tests:
+  phpunit:
+    - # Acquia CMS tests.
+      path: "${docroot}"
+      directory: "${docroot}/profiles/contrib/acquia_cms/tests/phpunit"
+      config: "${repo.root}/tests/phpunit/phpunit.xml"

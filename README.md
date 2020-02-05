@@ -18,6 +18,13 @@ BLT provides an automation layer for testing, building, and launching Drupal 8 a
    ```
    $ cd acquia-cms
    ```
+1. Get development Cohesion API keys from Confluence or a teammate. Copy .docksal/example.docksal-local.yml to docksal-local.yml and replace with your API keys:
+   ```
+   cli:
+     environment:
+       - COHESION_API_KEY=CHANGEME-12345
+       - COHESION_ORG_KEY=CHANGEME-678910
+   ```
 1. Initialize the project
    ```
    $ fin init
@@ -59,5 +66,5 @@ BLT uses a number of configuration (`.yml` or `.json`) files to define and custo
 ## Resources
 
 - JIRA - https://backlog.acquia.com/browse/ONE
-- GitHub - https://github.com/acquia/acquia-cms
-- TravisCI - https://travis-ci.com/acquia/acquia-cms
+- GitHub - https://github.com/acquia/acquia-cms-project
+- TravisCI - https://travis-ci.com/acquia/acquia-cms-project

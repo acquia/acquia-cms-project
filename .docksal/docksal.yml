@@ -19,7 +19,3 @@ services:
     dns:
       - ${DOCKSAL_DNS1}
       - ${DOCKSAL_DNS2}
-  cli:
-    environment:
-      - COHESION_API_KEY=umberloris-97542
-      - COHESION_ORG_KEY=acquia-502227

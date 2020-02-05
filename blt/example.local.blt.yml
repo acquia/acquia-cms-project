@@ -2,7 +2,7 @@
 project:
   local:
     protocol: http
-    hostname: '${env.VIRTUAL_HOST}'
+    hostname: "${env.VIRTUAL_HOST}"
 
 # You can set custom project aliases in drush/sites/*.site.yml.
 # All local:* targets are run against drush.aliases.local.
@@ -21,6 +21,12 @@ behat:
   # The URL for Chrome debug endpoint.
   chrome:
     api_url: http://chrome:9222
+tests:
+  phpunit:
+    - # Acquia CMS tests.
+      path: "${docroot}"
+      directory: "${docroot}/profiles/contrib/acquia_cms/tests/phpunit"
+      config: "${repo.root}/tests/phpunit/phpunit-local.xml"
 
 docksal:
   enable: true
