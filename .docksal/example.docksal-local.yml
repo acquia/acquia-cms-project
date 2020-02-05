@@ -1,0 +1,7 @@
+version: "2.1"
+
+services:
+  cli:
+    environment:
+      - COHESION_API_KEY=CHANGEME-12345
+      - COHESION_ORG_KEY=CHANGEME-678910

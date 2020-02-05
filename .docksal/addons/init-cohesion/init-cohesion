@@ -20,5 +20,5 @@ echo-yellow () { echo -e "${yellow}$1${NC}"; }
 
 #-------------------------- END: Helper functions ------------------------
 
-echo -e "${green}Importing Cohesion assets..."
-fin drush @self cohesion:import
+echo -e "${green}Importing UI kit..."
+# fin drush @self sync:import --keep-all
