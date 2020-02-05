@@ -86,4 +86,3 @@ tests:
     - # Acquia CMS tests.
       path: "${docroot}"
       directory: "${docroot}/profiles/contrib/acquia_cms/tests/phpunit"
-      config: "${repo.root}/phpunit.xml"
