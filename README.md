@@ -33,8 +33,8 @@ BLT provides an automation layer for testing, building, and launching Drupal 8 a
 
 Note the following properties of this project:
 
-- Primary development branch: **develop**
-- Local site URL: **http://acquia-cms.docksal**
+- Primary development branch: **master**
+- Local site URL: **http://acquia-cms-project.docksal**
 - Any project dependencies that need to have their own git repositories checked out for effective development are automatically checked out in acquia-cms/upstreams. Repo fodlers are symlinked into the appropriate place inside the Drupal file structure via Composer. **Make sure to commit any changes to these projects as part of your daily workflow.**
 
 ---

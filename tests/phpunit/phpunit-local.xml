@@ -24,7 +24,7 @@
     <ini name="memory_limit" value="-1"/>
     <!-- Example SIMPLETEST_BASE_URL value: http://localhost -->
     <env name="SIMPLETEST_BASE_URL" value="http://chrome:9222"/>
-    <env name="DTT_BASE_URL" value="http://chrome:9222"/>
+    <env name="DTT_BASE_URL" value="http://acquia-cms-project.docksal"/>
     <!-- Example SIMPLETEST_DB value: mysql://username:password@localhost/databasename#table_prefix -->
     <env name="SIMPLETEST_DB" value="mysql://root:root@db:3306/default"/>
     <!-- Example BROWSERTEST_OUTPUT_DIRECTORY value: /path/to/webroot/sites/simpletest/browser_output -->
@@ -70,6 +70,7 @@
       <directory>/var/www/acquia-cms-project/docroot/core/lib</directory>
       <directory>/var/www/acquia-cms-project/docroot/core/modules</directory>
       <directory>/var/www/acquia-cms-project/docroot/modules</directory>
+      <directory>/var/www/acquia-cms-project/docroot/profiles</directory>
       <directory>/var/www/acquia-cms-project/docroot/sites</directory>
       <!-- By definition test classes have no tests. -->
       <exclude>

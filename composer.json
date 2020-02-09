@@ -7,7 +7,8 @@
         "php": ">=7.2",
         "acquia/acquia_cms": "dev-master",
         "acquia/blt": "11.1.0",
-        "acquia/cohesion": "^6.0",
+        "cohesion/dx8": "5.7.10",
+        "cohesion/dx8-theme": "5.7.10",
         "acquia/composer-scaffold": "dev-master",
         "acquia/drupal-spec-tool": "*",
         "acquia/memcache-settings": "*",
@@ -129,10 +130,13 @@
             "type": "composer",
             "url": "https://asset-packagist.org"
         },
-        "cohesion": {
-            "type": "path",
-            "url": "upstreams/cohesion",
-            "symlink": "true"
+        "dx8": {
+            "type": "vcs",
+            "url": "https://bitbucket.org/cohesion_dev/dx8-module.git"
+        },
+        "dx8-theme": {
+            "type": "vcs",
+            "url": "https://bitbucket.org/cohesion_dev/dx8-theme.git"
         },
         "acquia_cms": {
             "type": "path",
