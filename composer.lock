@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f5fa1069f22b78fc17fb68d38c176fd0",
+    "content-hash": "b418d2d87ee64f2d510741dd538922a6",
     "packages": [
         {
             "name": "acquia/acquia_cms",
@@ -12,11 +12,11 @@
             "dist": {
                 "type": "path",
                 "url": "upstreams/acquia_cms",
-                "reference": "15d062ab2ad12203a81e9dc1a620e9cd4937483a"
+                "reference": "18c1959c6f4cd7781374bad7f445bcf8a425ffa8"
             },
             "require": {
-                "cohesion/dx8": "5.7.10",
-                "cohesion/dx8-theme": "5.7.10",
+                "cohesion/dx8": "6.0.0",
+                "cohesion/dx8-theme": "6.0.0",
                 "cweagans/composer-patches": "^1.6",
                 "drupal/admin_toolbar": "^2.0",
                 "drupal/adminimal_admin_toolbar": "^1.10",
@@ -1027,16 +1027,16 @@
         },
         {
             "name": "cohesion/dx8",
-            "version": "5.7.10",
+            "version": "6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/cohesion_dev/dx8-module.git",
-                "reference": "f6d6ddb7418f78a96b294b355ba6633778580090"
+                "reference": "bf076c8a01dca261a829c29ebdd5d2d9abec5673"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/cohesion_dev/dx8-module/get/f6d6ddb7418f78a96b294b355ba6633778580090.zip",
-                "reference": "f6d6ddb7418f78a96b294b355ba6633778580090",
+                "url": "https://bitbucket.org/cohesion_dev/dx8-module/get/bf076c8a01dca261a829c29ebdd5d2d9abec5673.zip",
+                "reference": "bf076c8a01dca261a829c29ebdd5d2d9abec5673",
                 "shasum": ""
             },
             "require": {
@@ -1047,7 +1047,9 @@
                 "ext-json": "*"
             },
             "require-dev": {
+                "acquia/coding-standards": "^0.4.1",
                 "behat/mink": "^1.7",
+                "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
                 "phpunit/phpunit": "^6.5",
                 "symfony/phpunit-bridge": "^4.3"
             },
@@ -1071,34 +1073,34 @@
                 },
                 "enable-patching": true
             },
-            "description": "DX8 module",
+            "description": "Acquia Cohesion",
             "homepage": "https://bitbucket.org/cohesion_dev/dx8-module",
             "support": {
-                "source": "https://bitbucket.org/cohesion_dev/dx8-module/src/f6d6ddb7418f78a96b294b355ba6633778580090/?at=5.7.10"
+                "source": "https://bitbucket.org/cohesion_dev/dx8-module/src/bf076c8a01dca261a829c29ebdd5d2d9abec5673/?at=6.0.0"
             },
-            "time": "2020-01-22T14:00:25+00:00"
+            "time": "2020-02-10T15:48:26+00:00"
         },
         {
             "name": "cohesion/dx8-theme",
-            "version": "5.7.10",
+            "version": "6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/cohesion_dev/dx8-theme.git",
-                "reference": "c1c9e2e616c17786051e0d7afd753035abc93e52"
+                "reference": "019a02e0853e0c08a423303a0fb8c6461423ce8b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/cohesion_dev/dx8-theme/get/c1c9e2e616c17786051e0d7afd753035abc93e52.zip",
-                "reference": "c1c9e2e616c17786051e0d7afd753035abc93e52",
+                "url": "https://bitbucket.org/cohesion_dev/dx8-theme/get/019a02e0853e0c08a423303a0fb8c6461423ce8b.zip",
+                "reference": "019a02e0853e0c08a423303a0fb8c6461423ce8b",
                 "shasum": ""
             },
             "type": "drupal-theme",
-            "description": "DX8 base theme",
+            "description": "Acquia Cohesion minimal theme",
             "homepage": "https://bitbucket.org/cohesion_dev/dx8-theme",
             "support": {
-                "source": "https://bitbucket.org/cohesion_dev/dx8-theme/src/c1c9e2e616c17786051e0d7afd753035abc93e52/?at=5.7.10"
+                "source": "https://bitbucket.org/cohesion_dev/dx8-theme/src/019a02e0853e0c08a423303a0fb8c6461423ce8b/?at=6.0.0"
             },
-            "time": "2020-01-22T14:00:41+00:00"
+            "time": "2020-02-10T15:48:48+00:00"
         },
         {
             "name": "composer/ca-bundle",
