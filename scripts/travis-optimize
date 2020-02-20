@@ -5,7 +5,7 @@
 #     stealing from ORCA temporarily.
 #
 # SYNOPSIS
-#     fin travis-optimize
+#     bash travis-optimize
 #
 # DESCRIPTION
 #     Configures the Travis CI environment.

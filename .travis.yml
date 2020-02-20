@@ -40,8 +40,8 @@ before_install:
   # Add Acquia CMS repo.
   - composer config --global repositories.acquia_cms vcs https://github.com/acquia/acquia_cms.git
   # Clone any upstream repos that ACMS is dependant on and need their own working dir.
-  - bash .docksal/addons/clone-repos/clone-repos
-  - bash .docksal/addons/travis-optimize/travis-optimize
+  - bash ./scripts/clone-repos
+  - bash ./scripts/travis-optimize
   - composer self-update
   - composer install
   # Exit build early if only documentation was changed in a Pull Request.

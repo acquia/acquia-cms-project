@@ -10,7 +10,7 @@
 # will not modify `drush.default_alias`, even though `drush.default_alias` is
 # set to `drush.aliases.local` by default.
 project:
-  machine_name: acquia-cms
+  machine_name: acquiacms
   # Used for enforcing correct git commit msg syntax.
   prefix: ONE
   human_name: "Acquia CMS"
@@ -22,10 +22,10 @@ project:
     hostname: "${env.VIRTUAL_HOST}"
 drupal:
   db:
-    database: default
-    username: user
-    password: user
-    host: db
+    database: drupal8
+    username: drupal8
+    password: drupal8
+    host: database
     port: 3306
 # Configuration settings for new git repository.
 git:

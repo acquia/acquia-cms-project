@@ -8,6 +8,7 @@ box/local.config.yml
 *.local
 local.blt.yml
 docksal-local.yml
+local.env
 
 # Ignore drupal core.
 docroot/core
