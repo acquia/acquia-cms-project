@@ -19,7 +19,7 @@ project:
   # This will be used as the local uri for all developers.
   local:
     protocol: http
-    hostname: "${env.VIRTUAL_HOST}"
+    hostname: "${project.machine_name}.lndo.site"
 drupal:
   db:
     database: drupal8
