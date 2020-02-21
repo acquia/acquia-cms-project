@@ -12,7 +12,6 @@
         "acquia/composer-scaffold": "dev-master",
         "acquia/drupal-spec-tool": "*",
         "acquia/memcache-settings": "*",
-        "docksal/blt-docksal": "dev-master",
         "drupal/acquia_connector": "^1.5.0",
         "drupal/acquia_purge": "^1.0-beta3",
         "drupal/acsf": "^2.63",
@@ -104,11 +103,6 @@
         ],
         "patchLevel": {
             "drupal/core": "-p2"
-        },
-        "patches": {
-            "docksal/blt-docksal": {
-                "Behat running twice in Travis": "./patches/blt-docksal-3-behat-testing-2x.patch"
-            }
         }
     },
     "autoload": {
