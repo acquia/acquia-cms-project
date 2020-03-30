@@ -19,12 +19,16 @@ cache:
   # - "docroot/themes/custom/mytheme/node_modules"
   # - "docroot/themes/custom/mytheme/bower_components"
 
+branches:
+  only:
+    - master
+
 services:
   - mysql
 
 addons:
-  # ssh_known_hosts:
-  #   - svn-4786.devcloud.hosting.acquia.com
+  ssh_known_hosts:
+    - svn-21939.prod.hosting.acquia.com
   chrome: stable
   hosts:
     - chrome
@@ -55,24 +59,24 @@ script:
   # Uncomment these lines to test database updates using live content.
   # - blt drupal:sync:default:site
   - source ${BLT_DIR}/scripts/travis/run_tests
-  # Uncomment below once we have a repo to deploy to.
-  # - source ${BLT_DIR}/scripts/travis/simulate_deploy
-  # deploy:
-  #   - provider: script
-  #     script: "${BLT_DIR}/scripts/travis/deploy_branch"
-  #     skip_cleanup: true
-  #     on:
-  #       branch: develop
-  #       php: 7.2
-  #   - provider: script
-  #     script: "${BLT_DIR}/scripts/travis/deploy_branch"
-  #     skip_cleanup: true
-  #     on:
-  #       branch: master
-  #       php: 7.2
-  #   - provider: script
-  #     script: "${BLT_DIR}/scripts/travis/deploy_tag"
-  #     skip_cleanup: true
-  #     on:
-  #       tags: true
-  #       php: 7.2
+  - source ${BLT_DIR}/scripts/travis/simulate_deploy
+
+  deploy:
+    - provider: script
+      script: "${BLT_DIR}/scripts/travis/deploy_branch"
+      skip_cleanup: true
+      on:
+        branch: develop
+        php: 7.2
+    - provider: script
+      script: "${BLT_DIR}/scripts/travis/deploy_branch"
+      skip_cleanup: true
+      on:
+        branch: master
+        php: 7.2
+    - provider: script
+      script: "${BLT_DIR}/scripts/travis/deploy_tag"
+      skip_cleanup: true
+      on:
+        tags: true
+        php: 7.2
