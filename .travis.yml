@@ -4,7 +4,7 @@ dist: xenial
 # Adjust the version of PHP to match your production environment.
 # Making this version number greater than the production environment can have unintended consequences
 # including a non-functional prod environment.
-php: "7.2"
+php: "7.3"
 
 env:
   global:
