@@ -1,0 +1,15 @@
+dev:
+  root: /var/www/html/orionacms.dev/docroot
+  uri: orionacmsdev.prod.acquia-sites.com
+  host: staging-37975.prod.hosting.acquia.com
+  user: orionacms.dev
+prod:
+  root: /var/www/html/orionacms.prod/docroot
+  uri: orionacms.prod.acquia-sites.com
+  host: ded-37973.prod.hosting.acquia.com
+  user: orionacms.prod
+test:
+  root: /var/www/html/orionacms.stage/docroot
+  uri: orionacmsstage.prod.acquia-sites.com
+  host: staging-37975.prod.hosting.acquia.com
+  user: orionacms.stage
