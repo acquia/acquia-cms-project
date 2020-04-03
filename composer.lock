@@ -12,7 +12,7 @@
             "dist": {
                 "type": "path",
                 "url": "upstreams/acquia_cms",
-                "reference": "987916a83c66ee1dbb55ac4ce2798466fa84e22b"
+                "reference": "52c9a08519f92b4d8be9183334e5de33a1bce402"
             },
             "require": {
                 "cohesion/dx8": "6.0.0",
