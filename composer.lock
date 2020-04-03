@@ -12,7 +12,7 @@
             "dist": {
                 "type": "path",
                 "url": "upstreams/acquia_cms",
-                "reference": "7717f44c06597a16868f5ba63300942dd7d16b50"
+                "reference": "52c9a08519f92b4d8be9183334e5de33a1bce402"
             },
             "require": {
                 "cohesion/dx8": "6.0.0",
@@ -21,6 +21,8 @@
                 "drupal/admin_toolbar": "^2.0",
                 "drupal/adminimal_admin_toolbar": "^1.10",
                 "drupal/core": "~8.8.4 || 8.9.*",
+                "drupal/default_content": "^1.0@alpha",
+                "drupal/environment_indicator": "^3.7",
                 "drupal/lightning_api": "^4.4",
                 "drupal/lightning_core": "^5.0",
                 "drupal/lightning_media": "^3.14",
@@ -227,6 +229,7 @@
                 }
             ],
             "description": "Composer Scaffold definitions for Acquia hosting",
+            "abandoned": true,
             "time": "2020-01-11T00:59:08+00:00"
         },
         {
@@ -861,7 +864,7 @@
             "version": "v2.3.4",
             "source": {
                 "type": "git",
-                "url": "https://github.com/fengyuanchen/cropper.git",
+                "url": "git@github.com:fengyuanchen/cropper.git",
                 "reference": "30c58b29ee21010e17e58ebab165fbd84285c685"
             },
             "dist": {
@@ -879,7 +882,7 @@
             "version": "v5.7.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/enyo/dropzone.git",
+                "url": "git@github.com:enyo/dropzone.git",
                 "reference": "5b82186d5f18540a1d13b6f4914fdc6220617ef5"
             },
             "dist": {
@@ -4577,6 +4580,82 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/ctools",
                 "issues": "https://www.drupal.org/project/issues/ctools"
+            }
+        },
+        {
+            "name": "drupal/default_content",
+            "version": "1.0.0-alpha8",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/default_content.git",
+                "reference": "8.x-1.0-alpha8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/default_content-8.x-1.0-alpha8.zip",
+                "reference": "8.x-1.0-alpha8",
+                "shasum": "cb16848a5c34bd5c11da1412fd49841814337ae8"
+            },
+            "require": {
+                "drupal/core": "~8.3"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-alpha8",
+                    "datestamp": "1556924587",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^9"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Berdir",
+                    "homepage": "https://www.drupal.org/user/214652"
+                },
+                {
+                    "name": "Sam152",
+                    "homepage": "https://www.drupal.org/user/1485048"
+                },
+                {
+                    "name": "andypost",
+                    "homepage": "https://www.drupal.org/user/118908"
+                },
+                {
+                    "name": "benjy",
+                    "homepage": "https://www.drupal.org/user/1852732"
+                },
+                {
+                    "name": "dawehner",
+                    "homepage": "https://www.drupal.org/user/99340"
+                },
+                {
+                    "name": "jibran",
+                    "homepage": "https://www.drupal.org/user/1198144"
+                },
+                {
+                    "name": "larowlan",
+                    "homepage": "https://www.drupal.org/user/395439"
+                }
+            ],
+            "description": "Imports default content when a module is enabled",
+            "homepage": "https://www.drupal.org/project/default_content",
+            "support": {
+                "source": "https://git.drupalcode.org/project/default_content"
             }
         },
         {
@@ -9134,6 +9213,7 @@
                     "email": "jakub.onderka@gmail.com"
                 }
             ],
+            "abandoned": "php-parallel-lint/php-console-color",
             "time": "2018-09-29T17:23:10+00:00"
         },
         {
@@ -9180,6 +9260,7 @@
                 }
             ],
             "description": "Highlight PHP code in terminal",
+            "abandoned": "php-parallel-lint/php-console-highlighter",
             "time": "2018-09-29T18:48:56+00:00"
         },
         {
