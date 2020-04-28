@@ -4,7 +4,7 @@
     "description": "An implementation of Lightning for running low code websites in the Acquia platform.",
     "license": "GPL-2.0-only",
     "require": {
-        "php": ">=7.2",
+        "php": ">=7.3",
         "acquia/acquia_cms": "dev-master",
         "acquia/blt": "11.1.0",
         "acquia/composer-scaffold": "dev-master",
@@ -39,7 +39,7 @@
     },
     "config": {
         "platform": {
-            "php": "7.2"
+            "php": "7.3"
         },
         "sort-packages": true
     },
