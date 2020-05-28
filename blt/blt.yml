@@ -20,13 +20,6 @@ project:
   local:
     protocol: http
     hostname: "${project.machine_name}.lndo.site"
-drupal:
-  db:
-    database: drupal8
-    username: drupal8
-    password: drupal8
-    host: database
-    port: 3306
 # Configuration settings for new git repository.
 git:
   default_branch: master
