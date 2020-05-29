@@ -145,6 +145,12 @@
             "blt internal:create-project:init-repo"
         ],
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "acms-update": [
+            "./scripts/acms-update.sh"
+        ],
+        "acms-rebase": [
+            "./scripts/acms-rebase.sh"
+        ],
         "nuke": [
             "rm -rf vendor composer.lock docroot/core docroot/modules/contrib docroot/profiles/contrib docroot/themes/contrib",
             "@composer clearcache --ansi",
