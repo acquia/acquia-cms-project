@@ -12,7 +12,7 @@
             "dist": {
                 "type": "path",
                 "url": "upstreams/acquia_cms",
-                "reference": "5bfcbe0511fa7adf28f5752e5c0ffebd6f51335a"
+                "reference": "4959d6f8563d7f8cc461bcc3e8d50cb2640b5e9f"
             },
             "require": {
                 "acquia/drupal-environment-detector": "dev-master",
@@ -87,6 +87,12 @@
                 "patches": []
             },
             "scripts": {
+                "post-install-cmd": [
+                    "mkdir -p ./docroot/profiles/acquia_cms",
+                    "@composer archive --file acquia_cms",
+                    "tar -x -f acquia_cms.tar -C ./docroot/profiles/acquia_cms",
+                    "rm acquia_cms.tar"
+                ],
                 "nuke": [
                     "rm -r -f docroot vendor"
                 ]
