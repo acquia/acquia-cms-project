@@ -12,7 +12,7 @@ services:
     run:
       - blt setup -n
     overrides:
-      image: 'acquia/ads-local:lando-php-7.2-nodejs-10'
+      image: 'acquia/ads-local:lando-php-7.3-nodejs-10'
       cap_add:
         - SYS_ADMIN
   phpmyadmin:
@@ -27,3 +27,13 @@ tooling:
     cmd: /app/vendor/bin/blt
   drush:
     cmd: /app/vendor/bin/drush --uri=acquiacms.lndo.site --root=/app/docroot
+  xdebug-on:
+    service: appserver
+    description: Enable xdebug for apache.
+    cmd: "docker-php-ext-enable xdebug && /etc/init.d/apache2 reload"
+    user: root
+  xdebug-off:
+    service: appserver
+    description: Disable xdebug for apache.
+    cmd: "rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && /etc/init.d/apache2 reload"
+    user: root
