@@ -20,13 +20,6 @@ project:
   local:
     protocol: http
     hostname: "${project.machine_name}.lndo.site"
-drupal:
-  db:
-    database: drupal8
-    username: drupal8
-    password: drupal8
-    host: database
-    port: 3306
 # Configuration settings for new git repository.
 git:
   default_branch: master
@@ -46,41 +39,3 @@ drush:
     ci: self
     # The default drush alias to be used when no environment is specified.
   default_alias: "${drush.aliases.local}"
-# An array of modules to be enabled or uninstalled automatically in local, ci,
-# and deploy contexts.
-modules:
-  local:
-    enable:
-      - dblog
-      - devel
-      - features
-      - features_ui
-      - seckit
-      - views_ui
-    uninstall:
-      - acquia_connector
-      - shield
-  ci:
-    enable: {}
-    uninstall:
-      - acquia_connector
-      - shield
-  dev:
-    enable:
-      - acquia_connector
-      - shield
-    uninstall: {}
-  test:
-    enable:
-      - acquia_connector
-      - shield
-    uninstall:
-      - devel
-      - views_ui
-  prod:
-    enable:
-      - acquia_connector
-      - shield
-    uninstall:
-      - devel
-      - views_ui
