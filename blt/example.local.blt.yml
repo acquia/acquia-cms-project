@@ -16,6 +16,10 @@ tests:
       path: "${docroot}"
       directory: "${docroot}/profiles/contrib/acquia_cms/tests/phpunit"
       config: "${repo.root}/tests/phpunit/phpunit-local.xml"
-
-docksal:
-  enable: true
+drupal:
+  db:
+    database: drupal8
+    username: drupal8
+    password: drupal8
+    host: database
+    port: 3306
