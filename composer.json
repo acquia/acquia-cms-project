@@ -1,7 +1,7 @@
 {
-    "name": "acquia/acquia-cms",
+    "name": "acquia/acquia-cms-project",
     "type": "project",
-    "description": "An implementation of Lightning for running low code websites in the Acquia platform.",
+    "description": "A BLT enabled implementation of Acquia CMS for running low code websites in the Acquia platform.",
     "license": "GPL-2.0-only",
     "require": {
         "php": ">=7.3",
