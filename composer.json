@@ -6,20 +6,20 @@
     "require": {
         "php": ">=7.3",
         "acquia/acquia_cms": "dev-develop",
-        "acquia/blt": "^11",
-        "acquia/composer-scaffold": "dev-master",
+        "acquia/blt": "^12",
+        "acquia/cohesion": "6.1.2",
+        "acquia/cohesion-theme": "6.1.2",
         "acquia/drupal-spec-tool": "*",
         "acquia/memcache-settings": "*",
-        "cohesion/dx8": "6.0.0",
-        "cohesion/dx8-theme": "6.0.0",
-        "drupal/config_split": "^1.0.0",
-        "drupal/devel": "^2.0.0",
-        "drupal/qa_accounts": "^1.0.0-alpha1",
+        "drupal/config_split": "^1.5",
+        "drupal/devel": "^4.0",
+        "drupal/qa_accounts": "1.x-dev",
         "symfony/phpunit-bridge": "^5.0",
         "weitzman/drupal-test-traits": "^1.3"
     },
     "require-dev": {
-        "acquia/blt-require-dev": "11.x-dev"
+        "drupal/core-composer-scaffold": "^9.0.0",
+        "oomphinc/composer-installers-extender": "^1.1"
     },
     "config": {
         "platform": {
@@ -107,14 +107,6 @@
         "asset-packagist": {
             "type": "composer",
             "url": "https://asset-packagist.org"
-        },
-        "dx8": {
-            "type": "vcs",
-            "url": "https://bitbucket.org/cohesion_dev/dx8-module.git"
-        },
-        "dx8-theme": {
-            "type": "vcs",
-            "url": "https://bitbucket.org/cohesion_dev/dx8-theme.git"
         },
         "acquia_cms": {
             "type": "path",
