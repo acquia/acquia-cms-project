@@ -12,7 +12,9 @@ An opinionated implementation of Drupal 9 tailored for creating full-featured we
 
 1. During the early access phases of ACMS, you'll need access to a Github user with rights to the Acquia Organization. To pull a copy of ACMS locally, you'll need an SSH key installed that has access rights.
 1. ACMS can be hosted inside any local development environment capable of hosting a Drupal 9 site. You will need to have Composer installed locally.
-1. To create the ACMS codebase, run `composer create-project acquia/acquia-cms-project:dev-develop`.
+1. To clone the ACMS codebase locally, run `git clone git@github.com:acquia/acquia-cms-project`.
+1. Run `composer install`.
+1, Run `composer install:frontend`.
 1. Then follow the install instructions for the development environment of your choice. Once configured, you should end up running `drush site-install acquia_cms -y --acount-pass admin` to install Drupal.
 
 # Getting Started (Cloud IDE).
