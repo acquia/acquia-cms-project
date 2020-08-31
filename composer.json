@@ -1,118 +1,99 @@
 {
-    "name": "acquia/acquia-cms-project",
-    "type": "project",
-    "description": "A BLT enabled implementation of Acquia CMS for running low code websites in the Acquia platform.",
-    "license": "GPL-2.0-only",
-    "require": {
-        "php": ">=7.3",
-        "acquia/acquia_cms": "dev-develop",
-        "acquia/blt": "^12",
-        "acquia/blt-behat": "dev-master",
-        "acquia/blt-phpcs": "dev-master",
-        "acquia/drupal-spec-tool": "^4",
-        "acquia/memcache-settings": "^1",
-        "composer/installers": "^1.9",
-        "cweagans/composer-patches": "^1.6",
-        "drupal/config_ignore": "^2.1",
-        "drupal/config_split": "^1.0.0",
-        "drupal/core-composer-scaffold": "^9",
-        "drupal/core-recommended": "^9",
-        "drupal/devel": "^4",
-        "weitzman/drupal-test-traits": "^1.5"
+  "name": "acquia/acquia-cms-project",
+  "type": "project",
+  "description": "Project template for Drupal 9 sites built with the Acquia CMS distribution.",
+  "license": "GPL-2.0-or-later",
+  "require": {
+    "acquia/acquia_cms": "dev-develop",
+    "acquia/drupal-environment-detector": "*",
+    "acquia/memcache-settings": "^1",
+    "cweagans/composer-patches": "^1.6.0",
+    "drupal/core-composer-scaffold": "*",
+    "drush/drush": "^10",
+    "oomphinc/composer-installers-extender": "^1.1"
+  },
+  "require-dev": {
+    "zaporylie/composer-drupal-optimizations": "^1.1"
+  },
+  "config": {
+    "process-timeout": 0,
+    "sort-packages": true
+  },
+  "extra": {
+    "composer-exit-on-patch-failure": true,
+    "drupal-scaffold": {
+      "allowed-packages": [
+        "drupal/core",
+        "acquia/acquia_cms"
+      ],
+      "locations": {
+        "web-root": "docroot/"
+      },
+      "gitignore": true
     },
-    "require-dev": {},
-    "config": {
-        "sort-packages": true
+    "enable-patching": true,
+    "installer-paths": {
+      "docroot/core": [
+        "type:drupal-core"
+      ],
+      "docroot/libraries/{$name}": [
+        "type:drupal-library",
+        "type:bower-asset",
+        "type:npm-asset"
+      ],
+      "docroot/modules/contrib/{$name}": [
+        "type:drupal-module"
+      ],
+      "docroot/profiles/contrib/{$name}": [
+        "type:drupal-profile"
+      ],
+      "docroot/themes/contrib/{$name}": [
+        "type:drupal-theme"
+      ],
+      "drush/Commands/contrib/{$name}": [
+        "type:drupal-drush"
+      ]
     },
-    "extra": {
-        "drupal-scaffold": {
-            "locations": {
-                "web-root": "docroot/"
-            },
-            "file-mapping": {
-                "[web-root]/sites/default/default.services.yml": {
-                    "mode": "replace",
-                    "path": "docroot/core/assets/scaffold/files/default.services.yml",
-                    "overwrite": false
-                },
-                "[web-root]/sites/default/default.settings.php": {
-                    "mode": "replace",
-                    "path": "docroot/core/assets/scaffold/files/default.settings.php",
-                    "overwrite": false
-                }
-            },
-            "gitignore": true
-        },
-        "enable-patching": true,
-        "installer-paths": {
-            "docroot/core": [
-                "type:drupal-core"
-            ],
-            "docroot/libraries/{$name}": [
-                "type:drupal-library",
-                "type:bower-asset",
-                "type:npm-asset"
-            ],
-            "docroot/modules/contrib/{$name}": [
-                "type:drupal-module"
-            ],
-            "docroot/profiles/contrib/{$name}": [
-                "type:drupal-profile"
-            ],
-            "docroot/themes/contrib/{$name}": [
-                "type:drupal-theme"
-            ],
-            "drush/Commands/contrib/{$name}": [
-                "type:drupal-drush"
-            ],
-            "docroot/modules/custom/{$name}": [
-                "type:drupal-custom-module"
-            ],
-            "docroot/themes/custom/{$name}": [
-                "type:drupal-custom-theme"
-            ]
-        },
-        "installer-types": [
-            "bower-asset",
-            "npm-asset"
-        ],
-        "patchLevel": {
-            "drupal/core": "-p2"
-        },
-        "patches": {}
-    },
-    "repositories": {
-        "drupal": {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        },
-        "asset-packagist": {
-            "type": "composer",
-            "url": "https://asset-packagist.org"
-        },
-        "acquia_cms": {
-            "type": "path",
-            "url": "upstreams/acquia_cms",
-            "symlink": "true"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "post-create-project-cmd": [
-            "blt internal:create-project:init-repo"
-        ],
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "acms-update": [
-            "./scripts/acms-update.sh"
-        ],
-        "acms-rebase": [
-            "./scripts/acms-rebase.sh"
-        ],
-        "nuke": [
-            "rm -rf vendor composer.lock docroot/core docroot/modules/contrib docroot/profiles/contrib docroot/themes/contrib",
-            "@composer clearcache --ansi",
-            "@composer install --ansi"
-        ]
+    "installer-types": [
+      "bower-asset",
+      "npm-asset"
+    ],
+    "patchLevel": {
+      "drupal/core": "-p2"
     }
+  },
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url": "https://packages.drupal.org/8"
+    },
+    "assets": {
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    },
+    "acquia-cms": {
+        "type": "vcs",
+        "url": "https://github.com/acquia/acquia_cms.git",
+        "no-api": true
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "remove-git-submodules" : "find . -mindepth 2 -type d -name .git | xargs rm -rf",
+    "post-install-cmd": [
+      "composer run-script remove-git-submodules",
+      "composer install:frontend"
+    ],
+    "build:frontend": [
+      "cd $PROFILE_DIR/themes/acquia_claro && npm run build",
+      "mkdir -p $PROFILE_DIR/modules/acquia_cms_toolbar/css",
+      "cp $PROFILE_DIR/themes/acquia_claro/css/acquia_cms_toolbar.css $PROFILE_DIR/modules/acquia_cms_toolbar/css"
+    ],
+    "install:frontend": [
+      "@putenv PROFILE_DIR=docroot/profiles/contrib/acquia_cms",
+      "cd $PROFILE_DIR/themes/acquia_claro && npm install",
+      "composer build:frontend"
+    ]
+  }
 }
