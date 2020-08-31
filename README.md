@@ -23,6 +23,8 @@ An opinionated implementation of Drupal 9 tailored for creating full-featured we
 1. Run `acli ssh-key:create` and follow the directions.
 1. Run `acli ssh-key:upload` and follow the directions.
 1. Run `cat ~/.ssh/id_rsa.pub` (use whatever filename you chose for your SSH key). Copy the SSH key and add it to your GitHub account. See https://docs.acquia.com/dev-studio/ide/start/#cloning-your-application-from-a-github-repository-to-your-ide for more information. Be sure to enable SSO for the newly added key, authorizing the Acquia organization.
-1. Next we need to use Acquia CMS Composer template. Run the following command `composer create-project acquia/acquia-cms-project:dev-develop`.
-1. Then run `drush site-install acquia_cms -y --acount-pass admin`.
+1. Clone the customer facing acquia-cms-project repo: `git clone git@github.com:acquia/acquia-cms-project .`
+1. Run `composer install`. If you receive out of memory errors, try `php -d memory_limit=2G /usr/local/bin/composer install`.
+1, Run `composer install:frontend`.
+1. Then run `drush site-install acquia_cms -y --account-pass admin`.
 1. Once Drush tells you the install is complete, you can open your ACMS website by clicking the 'Open Drupal Site' in the menu bar of your IDE.
