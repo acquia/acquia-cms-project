@@ -75,6 +75,11 @@
         "type": "vcs",
         "url": "https://github.com/acquia/acquia_cms.git",
         "no-api": true
+    },
+    "acquia-cms": {
+        "type": "vcs",
+        "url": "https://github.com/acquia/acquia-cms-project.git",
+        "no-api": true
     }
   },
   "minimum-stability": "dev",
