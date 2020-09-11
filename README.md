@@ -14,7 +14,7 @@ An opinionated implementation of Drupal 9 tailored for creating full-featured we
 1. Acquia CMS can be hosted inside any local development environment capable of hosting a Drupal 9 site. You will need to have Composer installed locally.
 1. To clone the Acquia CMS codebase locally, run `git clone git@github.com:acquia/acquia-cms-project`.
 1. Run `composer install`.
-1, Run `composer install:frontend`.
+1. Run `composer install:frontend`.
 1. Then follow the install instructions for the development environment of your choice. Once configured, you should end up running `drush site-install acquia_cms -y --acount-pass admin` to install Drupal.
 
 # Getting Started (Cloud IDE).
