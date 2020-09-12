@@ -29,6 +29,11 @@
       "locations": {
         "web-root": "docroot/"
       },
+      "file-mapping": {
+        "[web-root]/sites/default/default.settings.php": {
+            "append": "./patches/acms-project-settings.patch"
+        }
+      },
       "gitignore": true
     },
     "enable-patching": true,
@@ -94,6 +99,9 @@
       "@putenv PROFILE_DIR=docroot/profiles/contrib/acquia_cms",
       "cd $PROFILE_DIR/themes/acquia_claro && npm install",
       "composer build:frontend"
+    ],
+    "nuke": [
+      "rm -rf docroot vendor"
     ]
   }
 }
