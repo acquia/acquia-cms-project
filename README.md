@@ -13,7 +13,7 @@ An opinionated implementation of Drupal 9 tailored for creating full-featured we
 1. During the early access phases of Acquia CMS, you'll need access to a Github user with rights to the [Acquia Github organization](https://github.com/acquia). To pull a copy of Acquia CMS locally, you'll need an SSH key installed that has access rights.
 1. Acquia CMS can be hosted inside any local development environment capable of hosting a Drupal 9 site. You will need to have Composer installed locally.
 1. To clone the Acquia CMS codebase locally, run `git clone git@github.com:acquia/acquia-cms-project`.
-1. Run `composer install`.
+1. Run `composer install`. If you receive out of memory errors, try `php -d memory_limit=2G /usr/local/bin/composer install`.
 1. Run `composer install:frontend`.
 1. Then follow the install instructions for the development environment of your choice. Once configured, you should end up running `drush site-install acquia_cms -y --acount-pass admin` to install Drupal.
 
@@ -28,6 +28,6 @@ An opinionated implementation of Drupal 9 tailored for creating full-featured we
 1. Run `cat ~/.ssh/id_rsa.pub` (use whatever filename you chose for your SSH key). Copy the SSH key and add it to your GitHub account. See https://docs.acquia.com/dev-studio/ide/start/#cloning-your-application-from-a-github-repository-to-your-cloud-ide for more information. *Be sure to enable SSO for the newly added key, authorizing the Acquia organization.*
 1. Clone the customer facing `acquia-cms-project` repo: `git clone git@github.com:acquia/acquia-cms-project .`
 1. Run `composer install`. If you receive out of memory errors, try `php -d memory_limit=2G /usr/local/bin/composer install`.
-1, Run `composer install:frontend`.
+1. Run `composer install:frontend`.
 1. Then run `drush site-install acquia_cms -y --account-pass admin`.
 1. Once Drush tells you the install is complete, you can open your Acquia CMS website by clicking the 'Open Drupal Site' in the menu bar of your Cloud IDE.
