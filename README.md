@@ -4,9 +4,18 @@ An opinionated implementation of Drupal 9 tailored for creating full-featured we
 
 # Prerequisites
 
-1. To evaluate Acquia CMS inside a Cloud IDE, you need an entitlement. See your account manager or the Cloud IDE team for details.
+1. To evaluate Acquia CMS inside a Cloud IDE, you need an entitlement. Every Acquia employee has one Cloud IDE entitlement attached to their free employee subscription. If you need more Cloud IDEs, see [the entitlements page in Confluence](https://confluence.acquia.com/display/remote/Entitlements).
 1. Acquia CMS is meant to be deployed and hosted in an Acquia Cloud environemnt. See your account manager for details.
 1. Acquia CMS also requires Site Studio access. Obtain your API keys from a teammate or via [the request form in Confluence](https://confluence.acquia.com/display/cohesion/Employee+API+Keys).
+
+## Optional setup step: Pre-configure Site Studio API keys
+
+To save time and resources, Acquia CMS will not by default import any templates from Cohesion during installation. If you want to automatically import Cohesion templates during installation, you'll need to provide the Cohesion API key and organization key, which you can get from your manager or technical architect, as environment variables:
+
+```
+export COHESION_API_KEY=foo
+export COHESION_ORG_KEY=bar
+```
 
 # Getting Started (Local).
 
