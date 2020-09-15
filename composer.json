@@ -4,7 +4,7 @@
   "description": "Project template for Drupal 9 sites built with the Acquia CMS distribution.",
   "license": "GPL-2.0-or-later",
   "require": {
-    "acquia/acquia_cms": "dev-develop",
+    "acquia/acquia_cms": "^1.0.0-alpha1",
     "acquia/drupal-environment-detector": "*",
     "acquia/memcache-settings": "^1",
     "cweagans/composer-patches": "^1.6.0",
