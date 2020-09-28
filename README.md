@@ -2,6 +2,12 @@
 
 An opinionated implementation of Drupal 9 tailored for creating full-featured websites with low or no coding required.
 
+# Environment Requirements
+
+1. PHP 7.3
+1. MySQL 5.7 or MariaDB 10.3.7
+1. Composer >= 1.9.2
+
 # Prerequisites
 
 1. To evaluate Acquia CMS inside a Cloud IDE, you need an entitlement. Every Acquia employee has one Cloud IDE entitlement attached to their free employee subscription. If you need more Cloud IDEs, see [the entitlements page in Confluence](https://confluence.acquia.com/display/remote/Entitlements).
@@ -24,7 +30,12 @@ export COHESION_ORG_KEY=bar
 1. To clone the Acquia CMS codebase locally, run `git clone git@github.com:acquia/acquia-cms-project`.
 1. Run `composer install`. If you receive out of memory errors, try `php -d memory_limit=2G /usr/local/bin/composer install`.
 1. Run `composer install:frontend`.
-1. Then follow the install instructions for the development environment of your choice. Once configured, you should end up running `drush site-install acquia_cms -y --account-pass admin` to install Drupal.
+1. Then follow the install instructions for the development environment of your choice. Once configured, you should end up running `drush site-install acquia_cms -y --acount-pass admin` to install Drupal.
+1. It can take a lot of memory to install Acquia CMS. If you run into memory errors, try increasing the memory limit when installing Acquia CMS:
+```
+php -d memory_limit=2G vendor/bin/drush site:install acquia_cms --yes --account-pass admin
+```
+If 2 GB *still* isn't enough memory, try raising the limit even more.
 
 # Getting Started (Cloud IDE).
 1. [Install Acquia CLI.](https://github.com/acquia/cli). Follow the instructions in the Acquia CLI README to authenticate with Cloud API and set up your SSH keys.
@@ -40,3 +51,8 @@ export COHESION_ORG_KEY=bar
 1. Run `composer install:frontend`.
 1. Then run `drush site-install acquia_cms -y --account-pass admin`.
 1. Once Drush tells you the install is complete, you can open your Acquia CMS website by clicking the 'Open Drupal Site' in the menu bar of your Cloud IDE.
+1. It can take a lot of memory to install Acquia CMS. If you run into memory errors, try increasing the memory limit when installing Acquia CMS:
+```
+php -d memory_limit=2G vendor/bin/drush site:install acquia_cms --yes --account-pass admin
+```
+If 2 GB *still* isn't enough memory, try raising the limit even more.

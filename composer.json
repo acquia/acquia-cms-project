@@ -4,11 +4,13 @@
   "description": "Project template for Drupal 9 sites built with the Acquia CMS distribution.",
   "license": "GPL-2.0-or-later",
   "require": {
+    "php": "~7.3",
+    "composer/composer": "~1.9.2",
     "acquia/acquia_cms": "^1.0.0-alpha2",
-    "acquia/drupal-environment-detector": "*",
+    "acquia/drupal-environment-detector": "^1",
     "acquia/memcache-settings": "^1",
     "cweagans/composer-patches": "^1.6.0",
-    "drupal/core-composer-scaffold": "*",
+    "drupal/core-composer-scaffold": "^9",
     "drush/drush": "^10",
     "oomphinc/composer-installers-extender": "^1.1"
   },
@@ -32,7 +34,11 @@
       "file-mapping": {
         "[web-root]/sites/default/default.settings.php": {
             "append": "./patches/acms-project-settings.patch"
-        }
+        },
+        "[project-root]/.editorconfig": false,
+        "[project-root]/.gitattributes": false,
+        "[project-root]/.travis.yml": false,
+        "[project-root]/acquia-pipelines.yml": false
       },
       "gitignore": true
     },
@@ -85,20 +91,27 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "scripts": {
-    "remove-git-submodules" : "find . -mindepth 2 -type d -name .git | xargs rm -rf",
-    "post-install-cmd": [
-      "composer run-script remove-git-submodules",
-      "composer install:frontend"
+    "pre-update-cmd": [
+      "@putenv COMPOSER_MEMORY_LIMIT=2G"
     ],
-    "build:frontend": [
-      "cd $PROFILE_DIR/themes/acquia_claro && npm run build",
-      "mkdir -p $PROFILE_DIR/modules/acquia_cms_toolbar/css",
-      "cp $PROFILE_DIR/themes/acquia_claro/css/acquia_cms_toolbar.css $PROFILE_DIR/modules/acquia_cms_toolbar/css"
+    "remove-git-submodules" : "find . -mindepth 2 -type d -name .git | xargs rm -rf",
+    "post-update-cmd": [
+      "composer run-script remove-git-submodules",
+      "composer install:frontend",
+      "composer build:frontend"
+    ],
+    "post-install-cmd": [
+      "composer run-script post-update-cmd"
     ],
     "install:frontend": [
       "@putenv PROFILE_DIR=docroot/profiles/contrib/acquia_cms",
-      "cd $PROFILE_DIR/themes/acquia_claro && npm install",
-      "composer build:frontend"
+      "cd $PROFILE_DIR/themes/acquia_claro && npm install"
+    ],
+    "build:frontend": [
+      "@putenv PROFILE_DIR=docroot/profiles/contrib/acquia_cms",
+      "cd $PROFILE_DIR/themes/acquia_claro && npm run build",
+      "mkdir -p $PROFILE_DIR/modules/acquia_cms_toolbar/css",
+      "cp $PROFILE_DIR/themes/acquia_claro/css/acquia_cms_toolbar.css $PROFILE_DIR/modules/acquia_cms_toolbar/css"
     ],
     "nuke": [
       "rm -rf docroot vendor"
