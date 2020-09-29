@@ -6,7 +6,7 @@
   "require": {
     "php": "~7.3",
     "composer/composer": "~1.9.2",
-    "acquia/acquia_cms": "^1.0.0-alpha2",
+    "acquia/acquia_cms": "dev-develop",
     "acquia/drupal-environment-detector": "^1",
     "acquia/memcache-settings": "^1",
     "cweagans/composer-patches": "^1.6.0",
@@ -29,16 +29,17 @@
         "acquia/acquia_cms"
       ],
       "locations": {
-        "web-root": "docroot/"
+        "web-root": "docroot/",
+        "profile-root": "docroot/profiles/contrib/acquia_cms"
       },
       "file-mapping": {
         "[web-root]/sites/default/default.settings.php": {
             "append": "./patches/acms-project-settings.patch"
         },
-        "[project-root]/.editorconfig": false,
-        "[project-root]/.gitattributes": false,
-        "[project-root]/.travis.yml": false,
-        "[project-root]/acquia-pipelines.yml": false
+        "[profile-root]/.editorconfig": false,
+        "[profile-root]/.gitattributes": false,
+        "[profile-root]/.travis.yml": false,
+        "[profile-root]/acquia-pipelines.yml": false
       },
       "gitignore": true
     },
@@ -105,10 +106,12 @@
     ],
     "install:frontend": [
       "@putenv PROFILE_DIR=docroot/profiles/contrib/acquia_cms",
+      "Composer\\Config::disableProcessTimeout",
       "cd $PROFILE_DIR/themes/acquia_claro && npm install"
     ],
     "build:frontend": [
       "@putenv PROFILE_DIR=docroot/profiles/contrib/acquia_cms",
+      "Composer\\Config::disableProcessTimeout",
       "cd $PROFILE_DIR/themes/acquia_claro && npm run build",
       "mkdir -p $PROFILE_DIR/modules/acquia_cms_toolbar/css",
       "cp $PROFILE_DIR/themes/acquia_claro/css/acquia_cms_toolbar.css $PROFILE_DIR/modules/acquia_cms_toolbar/css"
