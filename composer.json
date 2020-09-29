@@ -5,7 +5,6 @@
   "license": "GPL-2.0-or-later",
   "require": {
     "php": "~7.3",
-    "composer/composer": "~1.9.2",
     "acquia/acquia_cms": "dev-develop",
     "acquia/drupal-environment-detector": "^1",
     "acquia/memcache-settings": "^1",
