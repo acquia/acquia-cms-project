@@ -5,7 +5,7 @@
   "license": "GPL-2.0-or-later",
   "require": {
     "php": "~7.3",
-    "acquia/acquia_cms": "dev-develop",
+    "acquia/acquia_cms": "1.0.0-alpha3",
     "acquia/drupal-environment-detector": "^1",
     "acquia/memcache-settings": "^1",
     "cweagans/composer-patches": "^1.6.0",
@@ -32,9 +32,6 @@
         "profile-root": "docroot/profiles/contrib/acquia_cms"
       },
       "file-mapping": {
-        "[web-root]/sites/default/default.settings.php": {
-            "append": "./patches/acms-project-settings.patch"
-        },
         "[profile-root]/.editorconfig": false,
         "[profile-root]/.gitattributes": false,
         "[profile-root]/.travis.yml": false,
@@ -116,7 +113,7 @@
       "cp $PROFILE_DIR/themes/acquia_claro/css/acquia_cms_toolbar.css $PROFILE_DIR/modules/acquia_cms_toolbar/css"
     ],
     "nuke": [
-      "rm -rf docroot vendor"
+      "rm -rf docroot vendor composer.lock"
     ]
   }
 }
