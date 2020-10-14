@@ -11,11 +11,9 @@
     "cweagans/composer-patches": "^1.6.0",
     "drupal/core-composer-scaffold": "^9",
     "drush/drush": "^10",
-    "oomphinc/composer-installers-extender": "^1.1"
+    "oomphinc/composer-installers-extender": "^1.1 || ^2"
   },
-  "require-dev": {
-    "zaporylie/composer-drupal-optimizations": "^1.1"
-  },
+  "require-dev": {},
   "config": {
     "process-timeout": 0,
     "sort-packages": true
