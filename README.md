@@ -19,8 +19,8 @@ An opinionated implementation of Drupal 9 tailored for creating full-featured we
 To save time and resources, Acquia CMS will not by default import any templates from Cohesion during installation. If you want to automatically import Cohesion templates during installation, you'll need to provide the Cohesion API key and organization key, which you can get from your manager or technical architect, as environment variables:
 
 ```
-export COHESION_API_KEY=foo
-export COHESION_ORG_KEY=bar
+export SITESTUDIO_API_KEY=foo
+export SITESTUDIO_ORG_KEY=bar
 ```
 
 # Getting Started (Local).
