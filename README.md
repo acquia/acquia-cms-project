@@ -39,17 +39,15 @@ php -d memory_limit=2G vendor/bin/drush site:install acquia_cms --yes --account-
 If 2 GB *still* isn't enough memory, try raising the limit even more.
 
 # Getting Started (Cloud IDE).
-1. [Install Acquia CLI.](https://github.com/acquia/cli). Follow the instructions in the Acquia CLI README to authenticate with Cloud API and set up your SSH keys.
+1. [Install Acquia CLI.](https://github.com/acquia/cli). Follow the [instructions](https://docs.acquia.com/acquia-cli/install/) to authenticate with Cloud Platform API and set up your SSH key.
 1. Run `acli ide:create` and follow the prompts to create a new Cloud IDE.
 1. Open the link that says 'Your IDE URL' in a browser.
-1. All of the following instructions take place in the Cloud IDE, *ignore the instructions on the welcome page.* You have to manually install Acquia CMS from Github.
-1. Run `acli auth:login` and follow the directions.
-1. Run `acli ssh-key:create` and follow the directions to create an SSH key pair, e.g. `id_rsa` will yield a public / private keypair.
-1. Run `acli ssh-key:upload` and follow the directions to upload the public key. e.g. If you named the key `id_rsa` the file will be called `id_rsa.pub`.
-1. Run `cat ~/.ssh/id_rsa.pub` (use whatever filename you chose for your SSH key). Copy the SSH key and add it to your GitHub account. See https://docs.acquia.com/dev-studio/ide/start/#cloning-your-application-from-a-github-repository-to-your-cloud-ide for more information. *Be sure to enable SSO for the newly added key, authorizing the Acquia organization.*
-1. Clone the customer facing `acquia-cms-project` repo: `git clone git@github.com:acquia/acquia-cms-project .`
-1. Run `composer install`. If you receive out of memory errors, try `php -d memory_limit=2G /usr/local/bin/composer install`.
-1. Cloud IDEs will copy docroot/sites/default/default.settings.php to settings.php and configure the database connection string for you. The settings.php file includes automatic ACMS configuration for Acquia Cloud environments.
+1. All of the following instructions take place in the Cloud IDE, *ignore the "Copy from Acquia Cloud" instructions on the Get Started page.* You have to manually install Acquia CMS from Github as instructed below.
+1. Click on the "Configure" button and follow the directions.
+1. Run `cat ~/.ssh/id_rsa_acquia_ide_<UUID>.pub`. Copy the SSH key and add it to your GitHub account. See https://docs.acquia.com/dev-studio/ide/start/#cloning-your-application-from-a-github-repository-to-your-cloud-ide for more information. *Be sure to enable SSO for the newly added key, authorizing the Acquia organization.*
+1. Clone the customer facing `acquia-cms-project` repo: `git clone git@github.com:acquia/acquia-cms-project`.
+1. Run `composer2 install` for best performances. `composer install` will work and is prefixed with `COMPOSER_MEMORY_LIMIT=-1` to prevent running into PHP memory limit issues.
+1. Cloud IDE has pre-configured the database connection string for you and applied configuration overrides under `/var/www/site-php/<SITEGROUP>/<DBNAME>-settings.inc`. The `settings.php` file includes automatic ACMS configuration for Cloud Platform environments.
 1. Then run `drush site-install acquia_cms -y --account-pass admin`.
 1. Once Drush tells you the install is complete, you can open your Acquia CMS website by clicking the 'Open Drupal Site' in the menu bar of your Cloud IDE.
 1. It can take a lot of memory to install Acquia CMS. If you run into memory errors, try increasing the memory limit when installing Acquia CMS:
