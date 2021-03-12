@@ -91,12 +91,13 @@
     ],
     "remove-git-submodules" : "find . -mindepth 2 -type d -name .git | xargs rm -rf",
     "post-update-cmd": [
-      "composer run-script remove-git-submodules",
-      "composer install:frontend",
-      "composer build:frontend"
+      "composer run-script remove-git-submodules"
     ],
     "post-install-cmd": [
       "composer run-script post-update-cmd"
+    ],
+    "acms:install": [
+      "bash ./docroot/profiles/contrib/acquia_cms/install-acms"
     ],
     "install:frontend": [
       "@putenv PROFILE_DIR=docroot/profiles/contrib/acquia_cms",

@@ -10,50 +10,73 @@ An opinionated implementation of Drupal 9 tailored for creating full-featured we
 
 # Prerequisites
 
-1. To evaluate Acquia CMS inside a Cloud IDE, you need an entitlement. Every Acquia employee has one Cloud IDE entitlement attached to their free employee subscription. If you need more Cloud IDEs, see [the entitlements page in Confluence](https://confluence.acquia.com/display/remote/Entitlements).
-1. Acquia CMS is meant to be deployed and hosted in an Acquia Cloud environemnt. See your account manager for details.
-1. Acquia CMS also requires Site Studio access. Obtain your API keys from a teammate or via [the request form in Confluence](https://confluence.acquia.com/display/cohesion/Employee+API+Keys).
+To build sites with Acquia CMS, you need entitlements to the following products:
+1. [Acquia Cloud IDE](https://docs.acquia.com/ide/).
+1. And [Acquia Cloud](https://docs.acquia.com/guide/cloud-ace/) or [Site Factory](https://docs.acquia.com/site-factory/) hosting environemnt.
+1. [Acquia Site Studio](https://docs.acquia.com/site-studio/).
 
-## Optional setup step: Pre-configure Site Studio API keys
+## Optional setup step: Pre-configure your Site Studio API keys
 
-To save time and resources, Acquia CMS will not by default import any templates from Cohesion during installation. If you want to automatically import Cohesion templates during installation, you'll need to provide the Cohesion API key and organization key, which you can get from your manager or technical architect, as environment variables:
+To save time and resources, Acquia CMS does not import any templates from Site Studio during installation by default. If you want to automatically import templates during installation, ACMS needs the Site Studio API key and organization key to be configured. These keys are sent to you during the subscription sign-up process. The process to set API keys are different depending on where ACMS is being hosted:
+
+1. *Acquia Cloud Enterprise*:
+  - You can set the keys during a [normal Drupal install within the browser](https://docs.acquia.com/cloud-platform/create/install/). There is a form to collect the api and organization key.
+  - You can set the keys as environment variables in Acquia Cloud. See the example below for the variable name syntax Acquia CMS expects.
+1. *Site Factory*:
+  - To have your Site Studio keys set as environment variables inside your Factories, [contact Acquia Support](https://docs.acquia.com/support/) and file a ticket requesting the change.
+  - There are some caveats to pre-configuring API keys in Site Factory:
+    - Each Acquia Subscription is entitled to use Site Studio to build *one* site at no charge. Creating additional sites after the first will work as expected, but your account manager will contact you to discuss pricing. Note that setting the API key in Site Factory makes it very easy to exceed your site entitlement limits, and we recommend you contact your account manager to strategize your governance strategy for Acquia CMS and Site Factory.
+    - Additionally, having Site Studio import components automatically greatly increases the Drupal install time. You can easily configure Site Studio and enable starter content after install from inside Drupal, or by using Drush commands.
+1. *Local environments*:
+  - Acquia CMS only officially supports Acquia Cloud IDEs as a development environment, but setting environment variables is a fairly straight forward process. In most environments, simply access your terminal and run `export SITESTUDIO_API_KEY=foo && export SITESTUDIO_ORG_KEY=bar`.
+  - Then proceed with site install as described in the instructions below.
+
+**Site Studio variables example:**
 
 ```
-export SITESTUDIO_API_KEY=foo
-export SITESTUDIO_ORG_KEY=bar
+SITESTUDIO_API_KEY=foo
+SITESTUDIO_ORG_KEY=bar
 ```
+
+# Getting Started (Cloud IDE).
+
+- [Install Acquia CLI.](https://github.com/acquia/cli). Follow the instructions in the Acquia CLI README to authenticate with Cloud API and set up your SSH keys.
+- Run `acli ide:create` and follow the prompts to create a new Cloud IDE.
+- Open the link that says 'Your IDE URL' in a browser.
+- All of the following instructions take place in the Cloud IDE, *at this time, the following instructions supercede the instructions on the IDE welcome page.* You have to manually install Acquia CMS from Github.
+  1. Run `acli auth:login` and follow the directions.
+  1. Run `acli ssh-key:create` and follow the directions to create an SSH key pair, e.g. `id_rsa` will yield a public / private keypair.
+  1. Run `acli ssh-key:upload` and follow the directions to upload the public key. e.g. If you named the key `id_rsa` the file will be called `id_rsa.pub`.
+  1. Run `cat ~/.ssh/id_rsa.pub` (use whatever filename you chose for your SSH key). Copy the SSH key and add it to your GitHub account, or wherever you want to version control your application. See https://docs.acquia.com/dev-studio/ide/start/#cloning-your-application-from-a-github-repository-to-your-cloud-ide for more information.
+  1. Prior to the public ACMS launch, clone the customer facing `acquia-cms-project` repo: `git clone git@github.com:acquia/acquia-cms-project .`
+  1. Once the Acquia CMS repositories are public, you can just run `composer create-project acquia/acquia-cms-project`.
+  1. Run `composer install`. Acquia CMS dependencies are very memory intensive, but recent updates in Composer v2 address this. If you receive out of memory errors, try `php -d memory_limit=2G /usr/local/bin/composer install`.
+  1. Cloud IDEs will copy docroot/sites/default/default.settings.php to settings.php and configure the database connection string for you. The settings.php file includes automatic ACMS configuration for Acquia Cloud environments.
+  1. Then run `composer acms:install`. This runs a helper script to collect information from you and install Acquia CMS.
+  1. Once the install is complete, you can open your ACMS website by clicking the 'Open Drupal Site' in the menu bar of your Cloud IDE.
+  1. It can take a lot of memory to install Acquia CMS, especially in local environments with limited resources. If you run into memory errors, try increasing the memory limit when installing Acquia CMS:
+    ```
+    php -d memory_limit=2G vendor/bin/drush site:install acquia_cms --yes --account-pass admin
+    ```
+  1. If 2 GB *still* isn't enough memory, try raising the limit even more.
+  1. *Note:* If you install Acquia CMS with the the drush `site:install` command, Site Studio assets will need to be rebuilt by running `drush cohesion:rebuild` after ACMS is installed. The composer `acms:install` command described above does this for you.
 
 # Getting Started (Local).
 
-1. During the early access phases of Acquia CMS, you'll need access to a Github user with rights to the [Acquia Github organization](https://github.com/acquia). To pull a copy of Acquia CMS locally, you'll need an SSH key installed that has access rights.
-1. Acquia CMS can be hosted inside any local development environment capable of hosting a Drupal 9 site. You will need to have Composer installed locally.
-1. To clone the Acquia CMS codebase locally, run `git clone git@github.com:acquia/acquia-cms-project`.
+1. Acquia CMS can be hosted inside any local development environment capable of hosting a Drupal 9 site. You will need to have Composer installed locally, and we highly recommend using Composer 2.
+1. To clone the Acquia CMS codebase locally prior to the public release, run `git clone git@github.com:acquia/acquia-cms-project`.
+1. After GA launch, run `composer create-project acquia/acquia-cms-project`.
 1. Run `composer install`. If you receive out of memory errors, try `php -d memory_limit=2G /usr/local/bin/composer install`.
-1. Then follow the install instructions for the development environment of your choice. Once configured, you should end up running `drush site-install acquia_cms -y --acount-pass admin` to install Drupal.
-1. When installing locally, you need to copy docroot/sites/default/default.settings.php to settings.php and add your local datatbase credentials. ACMS makes changes to the settings.php file for Acquia hosting, but it has no opinion
-on local development environments.
+1. Then follow the Drupal configuration instructions for the development environment of your choice. For most environments, this means adding database credentials to settings.php. Drupal and ACMS will auto-create a settings.php file for you, but ACMS has no knowledge of credential configuration for any non-Acquia environments.
+1. Once configured, run `composer acms:install`.
 1. It can take a lot of memory to install Acquia CMS. If you run into memory errors, try increasing the memory limit when installing Acquia CMS:
 ```
 php -d memory_limit=2G vendor/bin/drush site:install acquia_cms --yes --account-pass admin
 ```
 If 2 GB *still* isn't enough memory, try raising the limit even more.
 
-# Getting Started (Cloud IDE).
-1. [Install Acquia CLI.](https://github.com/acquia/cli). Follow the instructions in the Acquia CLI README to authenticate with Cloud API and set up your SSH keys.
-1. Run `acli ide:create` and follow the prompts to create a new Cloud IDE.
-1. Open the link that says 'Your IDE URL' in a browser.
-1. All of the following instructions take place in the Cloud IDE, *ignore the instructions on the welcome page.* You have to manually install Acquia CMS from Github.
-1. Run `acli auth:login` and follow the directions.
-1. Run `acli ssh-key:create` and follow the directions to create an SSH key pair, e.g. `id_rsa` will yield a public / private keypair.
-1. Run `acli ssh-key:upload` and follow the directions to upload the public key. e.g. If you named the key `id_rsa` the file will be called `id_rsa.pub`.
-1. Run `cat ~/.ssh/id_rsa.pub` (use whatever filename you chose for your SSH key). Copy the SSH key and add it to your GitHub account. See https://docs.acquia.com/dev-studio/ide/start/#cloning-your-application-from-a-github-repository-to-your-cloud-ide for more information. *Be sure to enable SSO for the newly added key, authorizing the Acquia organization.*
-1. Clone the customer facing `acquia-cms-project` repo: `git clone git@github.com:acquia/acquia-cms-project .`
-1. Run `composer install`. If you receive out of memory errors, try `php -d memory_limit=2G /usr/local/bin/composer install`.
-1. Cloud IDEs will copy docroot/sites/default/default.settings.php to settings.php and configure the database connection string for you. The settings.php file includes automatic ACMS configuration for Acquia Cloud environments.
-1. Then run `drush site-install acquia_cms -y --account-pass admin`.
-1. Once Drush tells you the install is complete, you can open your Acquia CMS website by clicking the 'Open Drupal Site' in the menu bar of your Cloud IDE.
-1. It can take a lot of memory to install Acquia CMS. If you run into memory errors, try increasing the memory limit when installing Acquia CMS:
-```
-php -d memory_limit=2G vendor/bin/drush site:install acquia_cms --yes --account-pass admin
-```
-If 2 GB *still* isn't enough memory, try raising the limit even more.
+*Note:* If you install Acquia CMS with the the drush `site:install` command, Site Studio assets will need to be manually imported by running `drush cohesion:rebuild` after ACMS is installed. The composer `acms:install` command described above does this for you.
+
+# Enabling ACMS Starter Content and Demo
+
+Acquia CMS ships with starter website content, to demonstrate how pages can be built. It also provides a reasonable starting point for building custom sites. To enable the starter module, you can run `drush pm:enable acquia_cms_starter` or enable 'Acquia CMS Starter' from the modules admin page.
