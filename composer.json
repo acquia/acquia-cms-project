@@ -11,11 +11,9 @@
     "cweagans/composer-patches": "^1.6.0",
     "drupal/core-composer-scaffold": "^9",
     "drush/drush": "^10",
-    "oomphinc/composer-installers-extender": "^1.1"
+    "oomphinc/composer-installers-extender": "^1.1 || ^2"
   },
-  "require-dev": {
-    "zaporylie/composer-drupal-optimizations": "^1.1"
-  },
+  "require-dev": {},
   "config": {
     "process-timeout": 0,
     "sort-packages": true
@@ -27,17 +25,17 @@
         "drupal/core",
         "acquia/acquia_cms"
       ],
-      "locations": {
-        "web-root": "docroot/",
-        "profile-root": "docroot/profiles/contrib/acquia_cms"
-      },
       "file-mapping": {
         "[profile-root]/.editorconfig": false,
         "[profile-root]/.gitattributes": false,
         "[profile-root]/.travis.yml": false,
         "[profile-root]/acquia-pipelines.yml": false
       },
-      "gitignore": true
+      "gitignore": true,
+      "locations": {
+        "profile-root": "docroot/profiles/contrib/acquia_cms",
+        "web-root": "docroot/"
+      }
     },
     "enable-patching": true,
     "installer-paths": {
@@ -80,40 +78,29 @@
       "url": "https://asset-packagist.org"
     },
     "acquia-cms": {
-        "type": "vcs",
-        "url": "https://github.com/acquia/acquia_cms.git",
-        "no-api": true
+      "type": "vcs",
+      "url": "https://github.com/acquia/acquia_cms.git",
+      "no-api": true
     }
   },
   "minimum-stability": "dev",
   "prefer-stable": true,
   "scripts": {
-    "pre-update-cmd": [
-      "@putenv COMPOSER_MEMORY_LIMIT=2G"
-    ],
-    "remove-git-submodules" : "find . -mindepth 2 -type d -name .git | xargs rm -rf",
-    "post-update-cmd": [
-      "composer run-script remove-git-submodules",
-      "composer install:frontend",
-      "composer build:frontend"
-    ],
     "post-install-cmd": [
       "composer run-script post-update-cmd"
     ],
-    "install:frontend": [
-      "@putenv PROFILE_DIR=docroot/profiles/contrib/acquia_cms",
-      "Composer\\Config::disableProcessTimeout",
-      "cd $PROFILE_DIR/themes/acquia_claro && npm install"
+    "pre-update-cmd": [
+      "@putenv COMPOSER_MEMORY_LIMIT=2G"
     ],
-    "build:frontend": [
-      "@putenv PROFILE_DIR=docroot/profiles/contrib/acquia_cms",
-      "Composer\\Config::disableProcessTimeout",
-      "cd $PROFILE_DIR/themes/acquia_claro && npm run build",
-      "mkdir -p $PROFILE_DIR/modules/acquia_cms_toolbar/css",
-      "cp $PROFILE_DIR/themes/acquia_claro/css/acquia_cms_toolbar.css $PROFILE_DIR/modules/acquia_cms_toolbar/css"
+    "post-update-cmd": [
+      "composer run-script remove-git-submodules"
+    ],
+    "acms:install": [
+      "bash ./docroot/profiles/contrib/acquia_cms/install-acms"
     ],
     "nuke": [
       "rm -rf docroot vendor composer.lock"
-    ]
+    ],
+    "remove-git-submodules": "find . -mindepth 2 -type d -name .git | xargs rm -rf"
   }
 }
