@@ -1,6 +1,6 @@
-# Acquia CMS
+# Acquia CMS Composer Template
 
-An opinionated implementation of Drupal 9 tailored for creating full-featured websites with low or no coding required.
+Acquia CMS is an opinionated implementation of Drupal 9 tailored for creating full-featured websites with low or no code required.
 
 # Environment Requirements
 
@@ -57,3 +57,8 @@ If 2 GB *still* isn't enough memory, try raising the limit even more.
 php -d memory_limit=2G vendor/bin/drush site:install acquia_cms --yes --account-pass admin
 ```
 If 2 GB *still* isn't enough memory, try raising the limit even more.
+1. If you see blank pages with no styles being loaded after installing, you likely just need to run a cohesion rebuild via `drush cohesion:rebuild`.
+
+# Contributing to Acquia CMS
+
+[Refer to our contributors guide](https://github.com/acquia/acquia_cms/blob/develop/CONTRIBUTING.md) in the parent repository.
