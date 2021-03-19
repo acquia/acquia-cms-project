@@ -2,7 +2,20 @@
   "name": "acquia/acquia-cms-project",
   "type": "project",
   "description": "Project template for Drupal 9 sites built with the Acquia CMS distribution.",
+  "homepage": "https://github.com/acquia/acquia-cms-project",
   "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Michael Sherron",
+      "email": "michael.sherron@acquia.com",
+      "role": "Author"
+    },
+    {
+      "name": "Acquia Engineering",
+      "email": "engineering@acquia.org",
+      "role": "Maintainer"
+    }
+  ],
   "require": {
     "php": "~7.3",
     "acquia/acquia_cms": "dev-develop",
@@ -93,24 +106,10 @@
       "@putenv COMPOSER_MEMORY_LIMIT=2G"
     ],
     "post-update-cmd": [
-      "composer run-script remove-git-submodules",
-      "composer install:frontend",
-      "composer build:frontend"
+      "composer run-script remove-git-submodules"
     ],
     "acms:install": [
       "bash ./docroot/profiles/contrib/acquia_cms/install-acms"
-    ],
-    "build:frontend": [
-      "@putenv PROFILE_DIR=docroot/profiles/contrib/acquia_cms",
-      "Composer\\Config::disableProcessTimeout",
-      "cd $PROFILE_DIR/themes/acquia_claro && npm run build",
-      "mkdir -p $PROFILE_DIR/modules/acquia_cms_toolbar/css",
-      "cp $PROFILE_DIR/themes/acquia_claro/css/acquia_cms_toolbar.css $PROFILE_DIR/modules/acquia_cms_toolbar/css"
-    ],
-    "install:frontend": [
-      "@putenv PROFILE_DIR=docroot/profiles/contrib/acquia_cms",
-      "Composer\\Config::disableProcessTimeout",
-      "cd $PROFILE_DIR/themes/acquia_claro && npm install"
     ],
     "nuke": [
       "rm -rf docroot vendor composer.lock"
