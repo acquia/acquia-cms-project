@@ -2,9 +2,22 @@
   "name": "acquia/acquia-cms-project",
   "type": "project",
   "description": "Project template for Drupal 9 sites built with the Acquia CMS distribution.",
+  "homepage": "https://github.com/acquia/acquia-cms-project",
   "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "Michael Sherron",
+      "email": "michael.sherron@acquia.com",
+      "role": "Author"
+    },
+    {
+      "name": "Acquia Engineering",
+      "email": "engineering@acquia.org",
+      "role": "Maintainer"
+    }
+  ],
   "require": {
-    "php": "~7.3",
+    "php": "^7.3",
     "acquia/acquia_cms": "^1.0",
     "acquia/drupal-environment-detector": "^1",
     "acquia/memcache-settings": "^1",
@@ -13,7 +26,9 @@
     "drush/drush": "^10",
     "oomphinc/composer-installers-extender": "^1.1 || ^2"
   },
-  "require-dev": {},
+  "require-dev": {
+
+  },
   "config": {
     "process-timeout": 0,
     "sort-packages": true
