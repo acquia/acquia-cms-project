@@ -18,7 +18,7 @@
   ],
   "require": {
     "php": "^7.3",
-    "acquia/acquia_cms": "dev-develop",
+    "acquia/acquia_cms": "^1.0",
     "acquia/drupal-environment-detector": "^1",
     "acquia/memcache-settings": "^1",
     "cweagans/composer-patches": "^1.6.0",
@@ -89,11 +89,6 @@
     "assets": {
       "type": "composer",
       "url": "https://asset-packagist.org"
-    },
-    "acquia-cms": {
-      "type": "vcs",
-      "url": "https://github.com/acquia/acquia_cms.git",
-      "no-api": true
     }
   },
   "minimum-stability": "dev",
