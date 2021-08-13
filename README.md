@@ -50,22 +50,22 @@ SITESTUDIO_ORG_KEY=bar
   1. Run `acli ssh-key:create` and follow the directions to create an SSH key pair, e.g. `id_rsa` will yield a public / private keypair.
   1. Run `acli ssh-key:upload` and follow the directions to upload the public key. e.g. If you named the key `id_rsa` the file will be called `id_rsa.pub`.
   1. Run `cat ~/.ssh/id_rsa.pub` (use whatever filename you chose for your SSH key). Copy the SSH key and add it to your GitHub account, or wherever you want to version control your application. See https://docs.acquia.com/dev-studio/ide/start/#cloning-your-application-from-a-github-repository-to-your-cloud-ide for more information.
-  1. Run `composer create-project acquia/acquia-cms-project`.
   1. Enable the Intl extension. Intl is required to install Content Hub 8.x-2.21 and above & restart the PHP-FPM after making this change.
      ```
      echo "extension=intl.so" >> ../configs/php/custom.ini
      supervisorctl restart php-fpm
      ```
+  1. Run `composer create-project acquia/acquia-cms-project .`. You must create the project within the Cloud IDE project folder.
   1. Run `composer install`. Acquia CMS dependencies are very memory intensive, but recent updates in Composer v2 address this. If you receive out of memory errors, try `php -d memory_limit=2G /usr/local/bin/composer install`.
   1. Cloud IDEs will copy docroot/sites/default/default.settings.php to settings.php and configure the database connection string for you. The settings.php file includes automatic ACMS configuration for Acquia Cloud environments.
   1. Then run `composer acms:install`. This runs a helper script to collect information from you and install Acquia CMS.
-  1. Once the install is complete, you can open your ACMS website by clicking the 'Open Drupal Site' in the menu bar of your Cloud IDE.
+  1. Once the installation is complete, you can open your ACMS website by clicking the 'Manage Drupal Application' and then 'Open Drupal Site' in the menu bar of your Cloud IDE.
   1. It can take a lot of memory to install Acquia CMS, especially in local environments with limited resources. If you run into memory errors, try increasing the memory limit when installing Acquia CMS:
     ```
     php -d memory_limit=2G vendor/bin/drush site:install acquia_cms --yes --account-pass admin
     ```
   1. If 2 GB *still* isn't enough memory, try raising the limit even more.
-  1. *Note:* If you install Acquia CMS with the the drush `site:install` command, Site Studio assets will need to be rebuilt by running `drush cohesion:rebuild` after ACMS is installed. The composer `acms:install` command described above does this for you.
+  1. *Note:* If you install Acquia CMS with the drush `site:install` command, Site Studio assets will need to be rebuilt by running `drush cohesion:rebuild` after ACMS is installed. The composer `acms:install` command described above does this for you.
 
 # Getting Started (Local).
 
@@ -82,7 +82,7 @@ php -d memory_limit=2G vendor/bin/drush site:install acquia_cms --yes --account-
 If 2 GB *still* isn't enough memory, try raising the limit even more.
 1. If you see blank pages with no styles being loaded after installing, you likely just need to run a cohesion rebuild via `drush cohesion:rebuild`.
 
-*Note:* If you install Acquia CMS with the the drush `site:install` command, Site Studio assets will need to be manually imported by running `drush cohesion:rebuild` after ACMS is installed. The composer `acms:install` command described above does this for you.
+*Note:* If you install Acquia CMS with the drush `site:install` command, Site Studio assets will need to be manually imported by running `drush cohesion:rebuild` after ACMS is installed. The composer `acms:install` command described above does this for you.
 
 # Contributing to Acquia CMS
 
