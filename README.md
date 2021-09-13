@@ -65,8 +65,7 @@ SITESTUDIO_ORG_KEY=bar
 # Getting Started (Local).
 
 1. Acquia CMS can be hosted inside any local development environment capable of hosting a Drupal 9 site. You will need to have Composer installed locally, and we highly recommend using Composer 2.
-1. To clone the Acquia CMS codebase locally prior to the public release, run `git clone git@github.com:acquia/acquia-cms-project`.
-1. After GA launch, run `composer create-project acquia/acquia-cms-project`.
+1. Run `composer create-project acquia/acquia-cms-project`.
 1. Run `composer install`. If you receive out of memory errors, try `php -d memory_limit=2G /usr/local/bin/composer install`.
 1. Then follow the Drupal configuration instructions for the development environment of your choice. For most environments, this means adding database credentials to settings.php. Drupal and ACMS will auto-create a settings.php file for you, but ACMS has no knowledge of credential configuration for any non-Acquia environments.
 1. Once configured, run `composer acms:install`.
