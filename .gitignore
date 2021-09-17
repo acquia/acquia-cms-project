@@ -1,64 +1,38 @@
-# Ignore configuration files that may contain sensitive information.
-local.settings.php
-local.drush.yml
-local.site.yml
-local.services.yml
-tests/behat/local.yml
-box/local.config.yml
-*.local
-local.blt.yml
+# Files and directories suggested to be ignored by Drupal
+# @see https://git.drupalcode.org/project/drupal/-/blob/9.2.x/example.gitignore
+/docroot/core
+/vendor/
+/docroot/sites/*/settings*.php
+/docroot/sites/*/services*.yml
+/docroot/sites/*/files
+/docroot/sites/*/private
+/docroot/sites/simpletest
 
-# Ignore drupal core.
-docroot/core
+# Files created by ACMS
+/docroot/.gitignore
+/docroot/drush
 
-# Ignore paths that contain user-generated content.
-docroot/sites/*/files
-/files-private
-docroot/sites/*/private
+# Directories specific to this template
+/docroot/libraries
+/docroot/modules/contrib
+/docroot/profiles/contrib
+/docroot/themes/contrib
 
-# Ignore contrib modules. These should be created during build process.
-docroot/modules/contrib
-docroot/themes/contrib
-docroot/profiles/contrib
-docroot/libraries
-drush/Commands
-
-# Ignore custom theme build artifacts
-docroot/themes/custom/*/node_modules
-docroot/themes/custom/*/css
-docroot/themes/custom/*/styleguide
-
-# Ignore the React production builds.
-docroot/modules/custom/vcp_react_block/app/build
-
-# Ignore build artifacts
-deployment_identifier
-/deploy
-bin/*
-tmp
-reports
-/travis_wait*
+# Files and directories for common development environments, loosely inherited from BLT Project
+# @see https://github.com/acquia/blt-project/blob/11.x/.gitignore
 
 # OS X
 .DS_Store
 .AppleDouble
 .LSOverride
-
-# Thumbnails
 ._*
-
-# Files that might appear on external disk
 .Spotlight-V100
 .Trashes
 
-# Windows image file caches
+# Windows
 Thumbs.db
 ehthumbs.db
-
-# Folder config file
 Desktop.ini
-
-# Recycle Bin used on file shares
 $RECYCLE.BIN/
 
 # Eclipse
@@ -75,17 +49,11 @@ local.properties
 .classpath
 .settings/
 .loadpath
-
-# External tool builders
+*.launch
 .externalToolBuilders/
 
-# Locally stored "Eclipse launch configurations"
-*.launch
-
-# CDT-specific
+# CDT / PDT
 .cproject
-
-# PDT-specific
 .buildpathk
 
 # Emacs
@@ -98,21 +66,18 @@ auto-save-list
 tramp
 .\#*
 
-# User-specific stuff:
+# IntelliJ / PhpStorm
 .idea/
+atlassian-ide-plugin.xml
 
-#XHProf
+# XHProf
 xhprof_*
 
-#Composer vendor
-vendor/
-vendor/.git
-
-#Sass
+# Sass
 .sass-cache
 *.css.map
 
-#Netbeans IDE
+# Netbeans IDE
 nbproject
 nbproject/*
 
@@ -122,15 +87,7 @@ nbproject/*
 # DevDesktop
 *.dd
 
-#Exports
-*.gz
-*.sql
-*.zip
-
-# PHPStorm
-atlassian-ide-plugin.xml
-
-#NPM
+# NPM
 npm-debug.log
 
 # Drush 9 Checksums
@@ -138,6 +95,3 @@ drush/sites/.checksums
 
 # Deprecation detector rules
 .rules
-
-# This is a template, don't commmit the lockfile.
-composer.lock
