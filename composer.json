@@ -26,9 +26,7 @@
     "drush/drush": "^10",
     "oomphinc/composer-installers-extender": "^1.1 || ^2"
   },
-  "require-dev": {
-
-  },
+  "require-dev": {},
   "config": {
     "process-timeout": 0,
     "sort-packages": true
