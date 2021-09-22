@@ -17,7 +17,7 @@
     }
   ],
   "require": {
-    "php": "^7.3",
+    "php": "^7.3 || ^8.0",
     "acquia/acquia_cms": "dev-develop",
     "acquia/drupal-environment-detector": "^1",
     "acquia/memcache-settings": "^1",
