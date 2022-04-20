@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Set colors, because we're fancy.
+YELLOW='\033[0;33m'
+NC='\033[0m'
+
+printf "${YELLOW}"
+cat << EOF
+**** WARNING: This project has been deprecated. You should use the following
+**** to install a new instance of Acquia CMS:
+****
+**** https://github.com/acquia/drupal-recommended-project
+****
+**** Please see README.md in the project root for more details.
+****
+**** Press CTRL-C to abort.
+
+EOF
+printf "${NC}"

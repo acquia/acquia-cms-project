@@ -90,11 +90,15 @@
   "minimum-stability": "dev",
   "prefer-stable": true,
   "scripts": {
+    "pre-install-cmd": [
+      "composer run-script post-update-cmd"
+    ],
     "post-install-cmd": [
       "composer run-script post-update-cmd"
     ],
     "pre-update-cmd": [
-      "@putenv COMPOSER_MEMORY_LIMIT=2G"
+      "@putenv COMPOSER_MEMORY_LIMIT=2G",
+      "bash ./scripts/deprecated-warning"
     ],
     "post-update-cmd": [
       "composer run-script remove-git-submodules"
